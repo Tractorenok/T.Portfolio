@@ -2,20 +2,20 @@
    Design tokens
    ============================================================ */
 :root {
-  --bg: #0b0c0f;
-  --bg-soft: #111318;
-  --surface: #15181e;
-  --surface-2: #1b1f27;
-  --border: #272b34;
-  --border-soft: #1f232b;
+  --bg: #1b263b;
+  --bg-soft: #162032;
+  --surface: #1f2c45;
+  --surface-2: #273650;
+  --border: #35486a;
+  --border-soft: #2a3a57;
 
-  --text: #e9ebef;
-  --text-dim: #aab0ba;
-  --text-mute: #727a86;
+  --text: #eaf0fb;
+  --text-dim: #aab6cc;
+  --text-mute: #74839d;
 
-  --accent: #7c6cff;
-  --accent-2: #38d9c8;
-  --accent-soft: rgba(124, 108, 255, 0.14);
+  --accent: #f72585;
+  --accent-2: #ff5c9d;
+  --accent-soft: rgba(247, 37, 133, 0.16);
 
   --radius: 16px;
   --radius-sm: 10px;
@@ -51,7 +51,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Subtle ambient glow behind the page */
@@ -61,8 +61,8 @@ body::before {
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(60rem 40rem at 15% -10%, rgba(124, 108, 255, 0.12), transparent 60%),
-    radial-gradient(50rem 40rem at 100% 0%, rgba(56, 217, 200, 0.08), transparent 55%);
+    radial-gradient(60rem 40rem at 15% -10%, rgba(247, 37, 133, 0.14), transparent 60%),
+    radial-gradient(50rem 40rem at 100% 0%, rgba(247, 37, 133, 0.07), transparent 55%);
   pointer-events: none;
 }
 
@@ -172,8 +172,8 @@ h3 {
   transform: translateY(-2px);
 }
 .btn-primary {
-  background: linear-gradient(120deg, var(--accent), #9a8cff);
-  color: #0b0c0f;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  color: #fff;
 }
 .btn-ghost {
   border-color: var(--border);
@@ -263,8 +263,8 @@ h3 {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--accent-2);
-  box-shadow: 0 0 0 4px rgba(56, 217, 200, 0.18);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(247, 37, 133, 0.22);
 }
 .hero h1 {
   font-size: clamp(2.2rem, 7vw, 4.2rem);
@@ -432,7 +432,7 @@ h3 {
 }
 .project.featured {
   background: linear-gradient(130deg, var(--surface-2), var(--surface));
-  border-color: rgba(124, 108, 255, 0.35);
+  border-color: rgba(247, 37, 133, 0.4);
 }
 .project-tag {
   font-family: var(--font-mono);
@@ -577,14 +577,9 @@ h3 {
 /* ============================================================
    Reveal on scroll
    ============================================================ */
+/* Обёртка секции. Контент виден всегда — анимацию глубины несёт стопка листов. */
 .reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal.is-visible {
   opacity: 1;
-  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -601,4 +596,108 @@ h3 {
     opacity: 1;
     transform: none;
   }
+}
+
+/* ============================================================
+   Stacked sheets (depth-on-scroll)
+   ============================================================ */
+.stack {
+  position: relative;
+}
+
+.sheet {
+  position: sticky;
+  top: var(--stick, 0px);
+}
+.sheet-full {
+  min-height: 100svh;
+}
+
+.sheet-paper {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--sheet-bg, var(--bg));
+  transform-origin: 50% 0;
+  transform: translate3d(0, calc(var(--cover, 0) * -16px), 0)
+    scale(calc(1 - var(--cover, 0) * 0.018));
+}
+.tone-a {
+  --sheet-bg: #1b263b;
+}
+.tone-b {
+  --sheet-bg: #1f2c45;
+}
+.sheet-hero .sheet-paper {
+  background-color: transparent;
+}
+
+.sheet-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Тонкая розовая кромка входящего края */
+.sheet-rim {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(247, 37, 133, 0.55), transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Мягкая тень, которую входящий лист отбрасывает на предыдущий */
+.sheet-shade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -44px;
+  height: 44px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.45), transparent);
+  pointer-events: none;
+  opacity: 0.9;
+  z-index: 4;
+}
+
+/* Затемнение уезжающего листа */
+.sheet-dim {
+  position: absolute;
+  inset: 0;
+  background: #0a1120;
+  opacity: calc(var(--cover, 0) * 0.16);
+  pointer-events: none;
+  z-index: 3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet-paper {
+    transform: none;
+  }
+  .sheet-dim,
+  .sheet-shade {
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   Lenis smooth scroll
+   ============================================================ */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
 }
