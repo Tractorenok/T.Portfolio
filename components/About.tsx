@@ -30,7 +30,7 @@ export default function About() {
               </div>
               <div className="row">
                 <dt>Формат</dt>
-                <dd>Офис · удалёнка · фриланс</dd>
+                <dd>Удалённо</dd>
               </div>
               <div className="row">
                 <dt>Статус</dt>

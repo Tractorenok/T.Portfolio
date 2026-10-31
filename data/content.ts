@@ -2,20 +2,20 @@
 
 export const profile = {
   name: "Костя Тракторёнок",
-  role: "Frontend-разработчик",
-  location: "Самара, Россия",
+  role: "Junior Frontend-разработчик",
+  location: "Жигулёвск",
   tagline: "Собираю понятные, быстрые и доступные интерфейсы.",
   pitch:
-    "Верстаю на HTML, CSS и JavaScript, работаю с React и Next.js. Довожу проекты до боевого деплоя на Vercel, а не бросаю на половине.",
+    "Делаю адаптивные и доступные интерфейсы на React и Next.js. Довожу проекты от макета до боевого деплоя на Vercel.",
   email: "kostytractorenok@gmail.com",
   telegram: "SexYTractorenok",
   github: "Tractorenok",
 };
 
 export const about = [
-  "Начинающий frontend-разработчик из Самары. Учусь через практику — собираю реальные проекты и довожу их до продакшена, а не коплю сертификаты курсов.",
-  "Пишу чистую семантическую вёрстку и думаю об адаптиве и доступности (A11Y) с первой строки: клавиатурная навигация, разумная анимация, контраст.",
-  "Сейчас углубляюсь в React, TypeScript и работу с API. Открыт к стажировкам и junior-позициям, беру и небольшие заказы.",
+  "Frontend-разработчик из Жигулёвска. Делаю адаптивные и доступные интерфейсы на HTML, CSS, JavaScript и React, собираю проекты на Next.js и деплою на Vercel.",
+  "Доступность — в основе: семантика, клавиатурная навигация, разумная анимация, контраст. Пишу чистый читаемый код и довожу задачи до рабочего результата.",
+  "Углубляю React, TypeScript и работу с API. Ищу junior-позицию на удалёнке.",
 ];
 
 export type SkillGroup = {
@@ -81,39 +81,9 @@ export const projects: Project[] = [
   },
 ];
 
-export type Service = {
-  title: string;
-  price: string;
-  description: string;
-};
-
-export const services: Service[] = [
-  {
-    title: "Лендинг",
-    price: "от 15 000 ₽",
-    description: "Одностраничный сайт: адаптив, анимация, быстрый деплой.",
-  },
-  {
-    title: "Многостраничный сайт",
-    price: "от 30 000 ₽",
-    description: "Несколько экранов, единый дизайн-система и навигация.",
-  },
-  {
-    title: "Интерфейс на React",
-    price: "от 40 000 ₽",
-    description: "Компонентный интерфейс на React / Next.js с состоянием.",
-  },
-  {
-    title: "Аудит и доработка",
-    price: "от 5 000 ₽",
-    description: "Адаптив, доступность и UX существующего фронтенда.",
-  },
-];
-
 export const navLinks = [
   { href: "#about", label: "Обо мне" },
   { href: "#skills", label: "Навыки" },
   { href: "#projects", label: "Проекты" },
-  { href: "#services", label: "Услуги" },
   { href: "#contact", label: "Контакты" },
 ];

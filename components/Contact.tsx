@@ -9,7 +9,7 @@ export default function Contact() {
         <div className="contact-card">
           <h2 id="contact-title">Давайте работать вместе</h2>
           <p>
-            Ищу junior-позицию или стажировку во frontend, открыт и к заказам.
+            Ищу junior-позицию на удалёнке, открыт и к разовым задачам.
             Отвечаю быстро — пишите, куда удобнее.
           </p>
           <div className="contact-links">

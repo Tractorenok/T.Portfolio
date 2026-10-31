@@ -73,7 +73,7 @@ export default function Hero() {
     <section className="hero container" aria-labelledby="hero-title">
       <p className="hero-eyebrow">
         <span className="hero-dot" aria-hidden="true" />
-        {profile.role} · {profile.location} · открыт к работе
+        {profile.role} · React, JavaScript · удалёнка · открыт к работе
       </p>
       <h1 id="hero-title">
         <SplitHeading />
