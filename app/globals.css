@@ -727,12 +727,12 @@ h3 {
   top: var(--stick, 0px);
 }
 .sheet-full {
-  min-height: 100svh;
+  min-height: auto;
 }
 
 .sheet-paper {
   position: relative;
-  min-height: 100svh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   background-color: var(--sheet-bg, var(--bg));
@@ -748,6 +748,7 @@ h3 {
 }
 .sheet-hero .sheet-paper {
   background-color: transparent;
+  min-height: 86svh;
 }
 
 .sheet-body {
