@@ -24,6 +24,9 @@
 
   --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: var(--font-mono-face), ui-monospace, "SF Mono", "Cascadia Code", monospace;
+  --font-display: var(--font-space), "Space Grotesk", var(--font-sans);
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 /* ============================================================
@@ -87,6 +90,14 @@ h3 {
   line-height: 1.15;
   font-weight: 700;
   letter-spacing: -0.02em;
+}
+
+/* Editorial: крупные заголовки — дисплейным гротеском */
+.hero h1,
+.section-title,
+.contact-card h2 {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
 }
 
 :focus-visible {
@@ -184,6 +195,59 @@ h3 {
   border-color: var(--accent);
 }
 
+/* Капсульная Telegram-кнопка с пробегающим бликом */
+.btn-tg {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #fff;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  cursor: pointer;
+  transition: transform 140ms var(--ease-out), box-shadow 280ms ease;
+}
+.btn-tg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: translateX(-160%) skewX(-20deg);
+  animation: tg-shine 3.5s var(--ease-out) infinite;
+  pointer-events: none;
+}
+@keyframes tg-shine {
+  0% {
+    transform: translateX(-160%) skewX(-20deg);
+  }
+  55%,
+  100% {
+    transform: translateX(320%) skewX(-20deg);
+  }
+}
+.btn-tg:active {
+  transform: scale(0.96);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-tg:hover {
+    box-shadow: 0 8px 30px rgba(247, 37, 133, 0.45);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-tg::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
 .chip {
   display: inline-flex;
   align-items: center;
@@ -276,6 +340,59 @@ h3 {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* Появление заголовка по буквам */
+.split {
+  display: inline;
+}
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+.char {
+  display: inline-block;
+  white-space: pre;
+  opacity: 0;
+  will-change: transform, opacity, filter;
+  animation: char-in 700ms var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+.char.accent {
+  color: var(--accent);
+}
+.char-space {
+  display: inline;
+  white-space: normal;
+}
+@keyframes char-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.45em);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+@keyframes char-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* reduced-motion: спокойнее (только прозрачность), но не выключаем совсем */
+@media (prefers-reduced-motion: reduce) {
+  .char {
+    animation: char-fade 450ms ease both !important;
+    animation-delay: calc(var(--i, 0) * 18ms) !important;
+    transform: none !important;
+    filter: none !important;
+  }
 }
 .hero-pitch {
   margin-top: 1.5rem;

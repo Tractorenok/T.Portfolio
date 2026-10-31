@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import TelegramButton from "./TelegramButton";
 import { profile } from "@/data/content";
 
 export default function Contact() {
@@ -15,14 +16,7 @@ export default function Contact() {
             <a href={`mailto:${profile.email}`} className="btn btn-primary">
               {profile.email}
             </a>
-            <a
-              href={`https://t.me/${profile.telegram}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-ghost"
-            >
-              Telegram
-            </a>
+            <TelegramButton />
             <a
               href={`https://github.com/${profile.github}`}
               target="_blank"
