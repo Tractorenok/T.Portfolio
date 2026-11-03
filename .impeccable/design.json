@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-03T00:00:00Z",
+  "title": "Design System: Костя Тракторёнок — Monitoring Console Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "live": { "role": "primary", "displayName": "Operational Green", "canonical": "#3ecf8e", "tonalRamp": ["#0b1f16", "#113326", "#17543b", "#1f7a54", "#2fa473", "#3ecf8e", "#6fdcaa", "#a9ecce"] },
+      "live-dim": { "role": "primary", "displayName": "Deep Operational Green", "canonical": "#2fa473", "tonalRamp": ["#0b1f16", "#113326", "#17543b", "#248a60", "#2fa473", "#45c58e", "#7bd9af", "#b0ecd0"] },
+      "bg": { "role": "neutral", "displayName": "Console Black", "canonical": "#08080a", "tonalRamp": ["#08080a", "#0d0d10", "#121216", "#17171c", "#1d1d23", "#26262c", "#35353d", "#82828c"] },
+      "panel": { "role": "neutral", "displayName": "Panel Grey", "canonical": "#121216", "tonalRamp": ["#08080a", "#0d0d10", "#121216", "#17171c", "#1d1d23", "#26262c", "#35353d", "#45454f"] },
+      "border": { "role": "neutral", "displayName": "Hairline Border", "canonical": "#26262c", "tonalRamp": ["#0d0d10", "#1b1b20", "#26262c", "#35353d", "#45454f", "#5a5a63", "#82828c", "#a0a0a8"] },
+      "text": { "role": "neutral", "displayName": "Primary Text", "canonical": "#ececee", "tonalRamp": ["#17171c", "#35353d", "#5a5a63", "#82828c", "#a0a0a8", "#c6c6cc", "#ececee", "#ffffff"] },
+      "text-dim": { "role": "neutral", "displayName": "Dimmed Text", "canonical": "#a0a0a8", "tonalRamp": ["#1d1d23", "#35353d", "#5a5a63", "#82828c", "#a0a0a8", "#c6c6cc", "#e2e2e6", "#ffffff"] },
+      "text-mute": { "role": "neutral", "displayName": "Muted Metadata Text", "canonical": "#82828c", "tonalRamp": ["#1d1d23", "#35353d", "#5a5a63", "#6c6c76", "#82828c", "#a0a0a8", "#c6c6cc", "#ececee"] },
+      "white": { "role": "neutral", "displayName": "Signal White", "canonical": "#ffffff", "tonalRamp": ["#82828c", "#a0a0a8", "#c6c6cc", "#e2e2e6", "#f1f1f3", "#f7f7f8", "#fcfcfd", "#ffffff"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0a0a0b", "tonalRamp": ["#0a0a0b", "#17171c", "#26262c", "#35353d", "#5a5a63", "#82828c", "#a0a0a8", "#ececee"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero H1 only; tight tracking, balanced wrap, ~17ch cap." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles and the contact card headline." },
+      "title": { "displayName": "Title", "purpose": "Monitor, card, and timeline headings." },
+      "body": { "displayName": "Body", "purpose": "Prose and summaries, dimmed, 44-65ch." },
+      "label": { "displayName": "Label / Mono", "purpose": "Geist Mono for all data, labels, metrics, endpoints, stack tags, timestamps; often uppercase, tracking 0.08em." }
+    },
+    "shadows": [
+      { "name": "edge-top", "value": "inset 0 1px 0 rgba(255,255,255,0.055)", "purpose": "Default lift for dark panels, cards, chips, ghost buttons — a hairline of light along the top edge (Better Stack signature)." },
+      { "name": "shadow-raise", "value": "0 10px 30px rgba(0,0,0,0.5)", "purpose": "Ambient underline added with edge-top on larger structural panels." },
+      { "name": "shadow-btn", "value": "0 1px 0 rgba(255,255,255,0.45) inset, 0 6px 20px rgba(0,0,0,0.45)", "purpose": "White primary pill's bright inset top-line plus soft drop; makes the CTA read as a physical key." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Exponential ease-out for section fade-up, button lift, scan sweep, and dot settling." },
+      { "name": "sweep", "value": "sweep 1.15s ease-out 0.05s forwards", "purpose": "Monitor 'come online' left-to-right green scan sweep; removed under prefers-reduced-motion." },
+      { "name": "pulse-ring", "value": "pulse-ring 2.6s ease-out infinite", "purpose": "Expanding halo on live-status dots; removed under prefers-reduced-motion." },
+      { "name": "reveal", "value": "opacity 0.6s ease-out, transform 0.6s ease-out (translateY 16px)", "purpose": "IntersectionObserver scroll fade-up; disabled under prefers-reduced-motion." }
+    ],
+    "breakpoints": [
+      { "name": "about-stack", "value": "820px" },
+      { "name": "monitor-stack", "value": "760px" },
+      { "name": "strip-wrap", "value": "600px" },
+      { "name": "timeline-stack", "value": "560px" },
+      { "name": "case-stack", "value": "520px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (Telegram CTA)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single primary action — white pill with inset top-highlight. Used in hero and repeated in top-right nav.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M21.9 4.27 18.7 19.4c-.24 1.06-.87 1.32-1.77.82l-4.9-3.6-2.36 2.27c-.26.26-.48.48-.98.48l.35-4.96 9.03-8.16c.39-.35-.09-.55-.6-.2L6.32 12.9l-4.8-1.5c-1.04-.33-1.06-1.04.22-1.54l18.76-7.23c.87-.32 1.63.2 1.4 1.64z\"/></svg>Написать в Telegram</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.78rem 1.4rem; border-radius: 999px; font-family: var(--font-geist-sans), -apple-system, sans-serif; font-weight: 500; font-size: 0.95rem; line-height: 1; border: 1px solid transparent; cursor: pointer; white-space: nowrap; background: #ffffff; color: #0a0a0b; box-shadow: 0 1px 0 rgba(255,255,255,0.45) inset, 0 6px 20px rgba(0,0,0,0.45); transition: transform 0.15s cubic-bezier(0.16,1,0.3,1), background 0.18s ease, box-shadow 0.18s ease; } .ds-btn-primary:hover { background: #f1f1f3; transform: translateY(-1px); } .ds-btn-primary:active { transform: translateY(0); } .ds-btn-primary:focus-visible { outline: 2px solid #3ecf8e; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action — dark panel surface with hairline border and edge highlight.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Проекты →</a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.62rem 1.1rem; border-radius: 999px; font-family: var(--font-geist-sans), -apple-system, sans-serif; font-weight: 500; font-size: 0.9rem; line-height: 1; cursor: pointer; white-space: nowrap; background: #121216; border: 1px solid #26262c; color: #ececee; box-shadow: inset 0 1px 0 rgba(255,255,255,0.055); transition: background 0.18s ease, border-color 0.18s ease; } .ds-btn-ghost:hover { border-color: #35353d; background: #17171c; } .ds-btn-ghost:focus-visible { outline: 2px solid #3ecf8e; outline-offset: 2px; }"
+    },
+    {
+      "name": "Status Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Availability badge — mono text pill with a pulsing green live-status dot.",
+      "html": "<p class=\"ds-status-chip\"><span class=\"ds-dot\" aria-hidden=\"true\"></span><b>Доступен</b> · junior · удалёнка</p>",
+      "css": ".ds-status-chip { display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--font-geist-mono), ui-monospace, monospace; font-size: 0.78rem; letter-spacing: 0.02em; color: #a0a0a8; background: #121216; border: 1px solid #26262c; padding: 0.4rem 0.8rem 0.4rem 0.7rem; border-radius: 999px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.055); } .ds-status-chip b { color: #3ecf8e; font-weight: 500; } .ds-status-chip .ds-dot { position: relative; width: 8px; height: 8px; border-radius: 50%; background: #3ecf8e; flex: none; } .ds-status-chip .ds-dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: #3ecf8e; animation: ds-pulse 2.6s cubic-bezier(0.16,1,0.3,1) infinite; } @keyframes ds-pulse { 0% { transform: scale(1); opacity: 0.55; } 80%,100% { transform: scale(3.4); opacity: 0; } } @media (prefers-reduced-motion: reduce) { .ds-status-chip .ds-dot::after { display: none; } }"
+    },
+    {
+      "name": "Data Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Inline mono tag for stack items and data.",
+      "html": "<span class=\"ds-chip\">Next.js</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; font-family: var(--font-geist-mono), ui-monospace, monospace; font-size: 0.74rem; letter-spacing: 0.01em; color: #a0a0a8; background: #121216; border: 1px solid #26262c; padding: 0.28rem 0.6rem; border-radius: 6px; }"
+    },
+    {
+      "name": "Console Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Readout panel with a mono uppercase title bar and hairline-ruled key/value rows; live rows show green.",
+      "html": "<div class=\"ds-console\"><div class=\"ds-console-bar\"><span class=\"ds-dot\"></span>STATUS</div><dl><div class=\"ds-row\"><dt>Роль</dt><dd>Junior Frontend</dd></div><div class=\"ds-row\"><dt>Доступность</dt><dd class=\"ds-live\"><span class=\"ds-dot2\"></span>Открыт к работе</dd></div></dl></div>",
+      "css": ".ds-console { background: #121216; border: 1px solid #26262c; border-radius: 8px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.055), 0 10px 30px rgba(0,0,0,0.5); overflow: hidden; } .ds-console-bar { display: flex; align-items: center; gap: 0.5rem; padding: 0.65rem 0.9rem; border-bottom: 1px solid #1b1b20; font-family: var(--font-geist-mono), monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: #82828c; background: #17171c; } .ds-console-bar .ds-dot { width: 7px; height: 7px; border-radius: 50%; background: #3ecf8e; } .ds-console .ds-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.75rem 0.9rem; border-bottom: 1px solid #1b1b20; } .ds-console .ds-row:last-child { border-bottom: none; } .ds-console dt { font-family: var(--font-geist-mono), monospace; font-size: 0.74rem; letter-spacing: 0.03em; color: #82828c; } .ds-console dd { text-align: right; font-size: 0.88rem; font-weight: 500; color: #ececee; } .ds-console dd.ds-live { display: inline-flex; align-items: center; gap: 0.45rem; color: #3ecf8e; } .ds-console .ds-dot2 { width: 8px; height: 8px; border-radius: 50%; background: #3ecf8e; box-shadow: 0 0 0 3px rgba(62,207,142,0.14); }"
+    },
+    {
+      "name": "Live Monitor Row",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "Signature component — a deployed project rendered as an operational monitor that comes online on scroll (green scan sweep + status dot settling to steady green). Sweep and pulse disabled under reduced motion.",
+      "html": "<article class=\"ds-monitor ds-is-in\"><div class=\"ds-monitor-meta\"><span class=\"ds-mdot\"></span><span class=\"ds-live-label\">LIVE</span><span class=\"ds-endpoint\">example.vercel.app</span><span class=\"ds-flag\">FLAGSHIP</span></div><h3 class=\"ds-monitor-title\">Tractor — лендинг</h3><p class=\"ds-monitor-summary\">Интерактивный калькулятор проекта на Next.js.</p></article>",
+      "css": ".ds-monitor { position: relative; padding: 1.6rem; border: 1px solid #26262c; border-radius: 8px; background: #121216; box-shadow: inset 0 1px 0 rgba(255,255,255,0.055), 0 10px 30px rgba(0,0,0,0.5); overflow: hidden; transition: background 0.2s ease; } .ds-monitor:hover { background: #17171c; } .ds-monitor::before { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 45%; pointer-events: none; background: linear-gradient(90deg, transparent, rgba(62,207,142,0.14), transparent); transform: translateX(-130%); opacity: 0; } .ds-monitor.ds-is-in::before { animation: ds-sweep 1.15s cubic-bezier(0.16,1,0.3,1) 0.05s forwards; } @keyframes ds-sweep { 0% { transform: translateX(-130%); opacity: 1; } 100% { transform: translateX(360%); opacity: 0; } } .ds-monitor-meta { display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-geist-mono), monospace; font-size: 0.73rem; letter-spacing: 0.02em; color: #82828c; flex-wrap: wrap; } .ds-mdot { width: 8px; height: 8px; border-radius: 50%; background: #82828c; transition: background 0.5s ease, box-shadow 0.5s ease; } .ds-monitor.ds-is-in .ds-mdot { background: #3ecf8e; box-shadow: 0 0 0 3px rgba(62,207,142,0.14); } .ds-live-label { color: #3ecf8e; letter-spacing: 0.08em; } .ds-flag { color: #ececee; border: 1px solid #35353d; border-radius: 4px; padding: 0.05rem 0.4rem; letter-spacing: 0.08em; } .ds-monitor-title { margin-top: 0.4rem; font-family: var(--font-geist-sans), sans-serif; font-size: 1.2rem; font-weight: 600; letter-spacing: -0.02em; color: #ececee; } .ds-monitor-summary { color: #a0a0a8; font-size: 0.95rem; margin-top: 0.4rem; } @media (prefers-reduced-motion: reduce) { .ds-monitor::before { display: none; } .ds-monitor .ds-mdot { background: #3ecf8e; box-shadow: 0 0 0 3px rgba(62,207,142,0.14); } }"
+    },
+    {
+      "name": "Header Nav Link",
+      "kind": "nav",
+      "refersTo": "button-ghost",
+      "description": "Dimmed nav link with subtle panel hover; lives in a sticky translucent blurred bar.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Проекты</a><a href=\"#\">Контакты</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 0.35rem; } .ds-nav a { color: #a0a0a8; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; white-space: nowrap; padding: 0.4rem 0.7rem; border-radius: 6px; text-decoration: none; transition: color 0.18s ease, background 0.18s ease; } .ds-nav a:hover { color: #ececee; background: #17171c; } .ds-nav a:focus-visible { outline: 2px solid #3ecf8e; outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Live Monitoring Console",
+    "overview": "The portfolio is built as a piece of the candidate's own developer tooling: a monochrome, near-black observability console in the Better Stack idiom. The ground is almost pure black (#08080a), structure is drawn with hairline borders rather than fills, and the entire surface reads as an operations dashboard where every panel is a status readout. The one idea it owns: deployed projects are rendered as live monitors — each one operational, linkable, and observable right now. Density is high and composed: content-height sections, hairline-ruled rows, and data expressed in monospace give the feel of a working instrument rather than a marketing page. Colour is withheld almost entirely — a single operational-green signal (#3ecf8e) carries availability and live status and nothing else. Depth is quiet: a faint overhead radial light and a signature inset top-highlight on raised surfaces, never heavy drop shadows as decoration. This world explicitly refuses the prior editorial stack-of-sheets treatment and the generic neon-glow dark hero.",
+    "keyCharacteristics": [
+      "Monochrome near-black ground built from layered neutral panels, not flat black.",
+      "Hairline borders as the primary structural device; fills are secondary.",
+      "Exactly one signal colour — operational green — reserved for live/available state.",
+      "Geist for everything; Geist Mono for all data, labels, metadata, and metrics.",
+      "Signature live-monitor 'come online' scan sweep, fully disabled under reduced motion.",
+      "WCAG 2.2 AA, themed browser surfaces, and reduced-motion support are part of the system."
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "Operational green appears only where it reports real operational truth — live status, availability, the active phase. If green would be decoration, it is wrong. Everything expressive is carried by neutrals and the white action instead.", "section": "colors" },
+      { "name": "The Mono-Means-Data Rule", "body": "Geist Mono is reserved for machine-readable content — labels, metrics, endpoints, timestamps, stack tags, status text. If text is prose a human reads in sentences, it is Geist Sans. The mono/sans split is how the console signals 'this is a readout'.", "section": "typography" },
+      { "name": "The Edge-Not-Drop Rule", "body": "Surfaces are lifted by a top edge-highlight and a hairline border first; ambient drop shadow is added only on the few large structural panels. Shadow is never used as decoration or hover flourish — hover shifts border and background, not elevation.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do build structure from hairline borders (#26262c standard, #1b1b20 internal rules, #35353d hover/emphasis) before reaching for fills.",
+      "Do layer surfaces on the panel ramp (#121216 → #17171c → #1d1d23) and lift them with the Edge Top inset highlight.",
+      "Do set every label, metric, endpoint, timestamp, and stack tag in Geist Mono; keep prose in Geist Sans (the Mono-Means-Data Rule).",
+      "Do reserve operational green (#3ecf8e) for live/available state only (the One Signal Rule), and keep the white pill the single primary action.",
+      "Do disable the monitor sweep and dot pulse under prefers-reduced-motion, rendering status dots steady green, and keep focus-visible (2px green outline), selection, caret, and scrollbar themed from the palette."
+    ],
+    "donts": [
+      "Don't use green for decoration, borders, headings, or hover states — if it isn't reporting operational truth, it's wrong.",
+      "Don't add drop shadows as decoration or hover flourish; hover shifts border and background, not elevation (the Edge-Not-Drop Rule).",
+      "Don't introduce a second accent hue, gradient fill, or neon glow — the world is monochrome plus one signal.",
+      "Don't force sections to 100vh; size them to content on the 1080px column."
+    ]
+  }
+}

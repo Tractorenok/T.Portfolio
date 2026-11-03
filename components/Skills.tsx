@@ -5,13 +5,10 @@ export default function Skills() {
   return (
     <section id="skills" className="section container" aria-labelledby="skills-title">
       <div className="section-head">
-        <span className="section-index">02</span>
         <h2 id="skills-title" className="section-title">
-          Навыки
+          Чем реально пользуюсь
         </h2>
-        <p className="section-lead">
-          Без процентных шкал — только то, чем реально пользуюсь в проектах.
-        </p>
+        <p className="section-lead">Без процентных шкал — только то, что идёт в работу.</p>
       </div>
       <Reveal>
         <div className="skills-grid">

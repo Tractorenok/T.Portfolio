@@ -8,7 +8,7 @@ export default function Footer() {
         <span>
           © {year} {profile.name}
         </span>
-        <span>собрано на Next.js · задеплоено на Vercel</span>
+        <span>Next.js · Vercel · собрано вручную</span>
       </div>
     </footer>
   );

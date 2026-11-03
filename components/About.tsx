@@ -5,39 +5,42 @@ export default function About() {
   return (
     <section id="about" className="section container" aria-labelledby="about-title">
       <div className="section-head">
-        <span className="section-index">01</span>
         <h2 id="about-title" className="section-title">
-          Обо мне
+          Кто за консолью
         </h2>
       </div>
-      <Reveal>
-        <div className="about-grid">
-          <div className="about-text">
-            {about.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
+      <Reveal className="about-grid">
+        <div className="about-text">
+          {about.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
+        <div className="console-card">
+          <div className="bar">
+            <span className="status-dot" aria-hidden="true" />
+            profile.status
           </div>
-          <div className="about-card">
-            <h3>Коротко</h3>
-            <dl>
-              <div className="row">
-                <dt>Город</dt>
-                <dd>{profile.location}</dd>
-              </div>
-              <div className="row">
-                <dt>Роль</dt>
-                <dd>{profile.role}</dd>
-              </div>
-              <div className="row">
-                <dt>Формат</dt>
-                <dd>Удалённо</dd>
-              </div>
-              <div className="row">
-                <dt>Статус</dt>
-                <dd>Открыт к предложениям</dd>
-              </div>
-            </dl>
-          </div>
+          <dl>
+            <div className="row">
+              <dt>Город</dt>
+              <dd>{profile.location}</dd>
+            </div>
+            <div className="row">
+              <dt>Роль</dt>
+              <dd>{profile.role}</dd>
+            </div>
+            <div className="row">
+              <dt>Формат</dt>
+              <dd>Удалённо</dd>
+            </div>
+            <div className="row">
+              <dt>Статус</dt>
+              <dd className="live">
+                <span className="status-dot" aria-hidden="true" />
+                Открыт к офферам
+              </dd>
+            </div>
+          </dl>
         </div>
       </Reveal>
     </section>

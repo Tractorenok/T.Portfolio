@@ -1,11 +1,13 @@
 import { navLinks, profile } from "@/data/content";
+import TelegramButton from "./TelegramButton";
 
 export default function Header() {
   return (
     <header className="header">
       <div className="container header-inner">
-        <a href="#main" className="brand">
-          t.<span>tractorenok</span>
+        <a href="#main" className="brand" aria-label={`${profile.name}, на главную`}>
+          <span className="status-dot" aria-hidden="true" />
+          tractorenok<span style={{ color: "var(--text-mute)" }}>.dev</span>
         </a>
         <nav className="nav" aria-label="Основная навигация">
           {navLinks.map((link) => (
@@ -14,14 +16,7 @@ export default function Header() {
             </a>
           ))}
         </nav>
-        <a
-          href={`https://t.me/${profile.telegram}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-ghost header-cta"
-        >
-          Написать
-        </a>
+        <TelegramButton label="Написать" />
       </div>
     </header>
   );
